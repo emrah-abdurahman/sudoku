@@ -1,0 +1,95 @@
+/* Sections Reference:
+   1 - GLOBAL CSS VARIABLES
+   2 - GLOBAL CSS RESET AND SETTINGS
+   3 - GLOBAL CONTAINER
+   4 - SUDOKU GRID STYLING
+   5 - SUDOKU BLOCK STYLING
+   6 - SUDOKU CELL STYLING
+*/
+
+/* 1 - GLOBAL CSS VARIABLES */
+:root {
+  --color-background: rgba(173, 203, 202, 1);
+  --color-background-block: rgba(255, 255, 255, 1);
+  --color-number: rgba(0, 0, 0, 1);
+}
+
+/* 2 - GLOBAL CSS RESET AND SETTINGS */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+/* 3 - GLOBAL CONTAINER */
+#container {
+  background-color: var(--color-background);
+  height: 75rem;
+  margin: auto auto;
+  width: 150rem;
+}
+
+/* 4 - SUDOKU GRID STYLING */
+.sudoku__grid {
+  color: var(--color-primary);
+  display: grid;
+  font-size: 3rem;
+  font-weight: 500;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  height: 50rem;
+  padding: 2rem;
+  width: 50rem;
+}
+
+/* 5 - SUDOKU BLOCK STYLING */
+.sudoku__block {
+  background-color: var(--color-background-block);
+  border: 2px solid black;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+/* 6 - SUDOKU CELL STYLING */
+.sudoku__block-cell {
+  align-items: center;
+  border: 1px solid rgb(129, 129, 129);
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  text-align: center;
+  user-select: none;
+  width: 100%;
+}
+
+.sudoku__block-cell-1,
+.sudoku__block-cell-2,
+.sudoku__block-cell-3 {
+  border-top: none;
+}
+
+.sudoku__block-cell-3,
+.sudoku__block-cell-6,
+.sudoku__block-cell-9 {
+  border-right: none;
+}
+
+.sudoku__block-cell-9,
+.sudoku__block-cell-8,
+.sudoku__block-cell-7 {
+  border-bottom: none;
+}
+
+.sudoku__block-cell-7,
+.sudoku__block-cell-4,
+.sudoku__block-cell-1 {
+  border-left: none;
+}
