@@ -5,13 +5,13 @@
    4 - SUDOKU GRID STYLING
    5 - SUDOKU BLOCK STYLING
    6 - SUDOKU CELL STYLING
+   7 - SUDOKU CONTROLS STYLING
 */
 
 /* 1 - GLOBAL CSS VARIABLES */
 :root {
   --color-background: rgba(173, 203, 202, 1);
   --color-background-block: rgba(255, 255, 255, 1);
-  --color-number: rgba(0, 0, 0, 1);
 }
 
 /* 2 - GLOBAL CSS RESET AND SETTINGS */
@@ -30,8 +30,14 @@ html {
 
 /* 3 - GLOBAL CONTAINER */
 #container {
+  align-items: center;
   background-color: var(--color-background);
+  display: grid;
+  font-size: 3rem;
+  font-weight: 500;
+  grid-template-columns: min-content max-content;
   height: 75rem;
+  justify-content: center;
   margin: auto auto;
   width: 150rem;
 }
@@ -40,8 +46,6 @@ html {
 .sudoku__grid {
   color: var(--color-primary);
   display: grid;
-  font-size: 3rem;
-  font-weight: 500;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   height: 50rem;
@@ -92,4 +96,29 @@ html {
 .sudoku__block-cell-4,
 .sudoku__block-cell-1 {
   border-left: none;
+}
+
+/* 7 - SUDOKU CONTROLS STYLING */
+.sudoku__controls {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: max-content;
+}
+
+.sudoku__start-game-btn {
+  height: 3rem;
+  width: 15rem;
+}
+
+.sudoku__numpad {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.sudoku__btn {
+  font-weight: 600;
+  height: 5rem;
+  width: 5rem;
 }
