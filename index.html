@@ -5,10 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sudoku</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <main id="container">
+      <header class="sudoku__header"><h1>Sudoku</h1></header>
       <section class="sudoku__grid">
         <div class="sudoku__block sudoku__block-1">
           <div class="sudoku__block-cell sudoku__block-cell-1">1</div>
@@ -17,7 +24,7 @@
           <div class="sudoku__block-cell sudoku__block-cell-4">4</div>
           <div class="sudoku__block-cell sudoku__block-cell-5">5</div>
           <div class="sudoku__block-cell sudoku__block-cell-6">6</div>
-          <div class="sudoku__block-cell sudoku__block-cell-7">7</div>
+          <div class="sudoku__block-cell sudoku__block-cell-7"></div>
           <div class="sudoku__block-cell sudoku__block-cell-8">8</div>
           <div class="sudoku__block-cell sudoku__block-cell-9">9</div>
         </div>
@@ -27,7 +34,7 @@
           <div class="sudoku__block-cell sudoku__block-cell-3">3</div>
           <div class="sudoku__block-cell sudoku__block-cell-4"></div>
           <div class="sudoku__block-cell sudoku__block-cell-5">5</div>
-          <div class="sudoku__block-cell sudoku__block-cell-6">6</div>
+          <div class="sudoku__block-cell sudoku__block-cell-6"></div>
           <div class="sudoku__block-cell sudoku__block-cell-7">7</div>
           <div class="sudoku__block-cell sudoku__block-cell-8">8</div>
           <div class="sudoku__block-cell sudoku__block-cell-9">9</div>
@@ -36,10 +43,10 @@
           <div class="sudoku__block-cell sudoku__block-cell-1">1</div>
           <div class="sudoku__block-cell sudoku__block-cell-2">2</div>
           <div class="sudoku__block-cell sudoku__block-cell-3">3</div>
-          <div class="sudoku__block-cell sudoku__block-cell-4">4</div>
+          <div class="sudoku__block-cell sudoku__block-cell-4"></div>
           <div class="sudoku__block-cell sudoku__block-cell-5">5</div>
           <div class="sudoku__block-cell sudoku__block-cell-6">6</div>
-          <div class="sudoku__block-cell sudoku__block-cell-7">7</div>
+          <div class="sudoku__block-cell sudoku__block-cell-7"></div>
           <div class="sudoku__block-cell sudoku__block-cell-8">8</div>
           <div class="sudoku__block-cell sudoku__block-cell-9"></div>
         </div>
@@ -61,13 +68,13 @@
           <div class="sudoku__block-cell sudoku__block-cell-4">4</div>
           <div class="sudoku__block-cell sudoku__block-cell-5">5</div>
           <div class="sudoku__block-cell sudoku__block-cell-6">6</div>
-          <div class="sudoku__block-cell sudoku__block-cell-7">7</div>
+          <div class="sudoku__block-cell sudoku__block-cell-7"></div>
           <div class="sudoku__block-cell sudoku__block-cell-8">8</div>
           <div class="sudoku__block-cell sudoku__block-cell-9">9</div>
         </div>
         <div class="sudoku__block sudoku__block-6">
           <div class="sudoku__block-cell sudoku__block-cell-1">1</div>
-          <div class="sudoku__block-cell sudoku__block-cell-2">2</div>
+          <div class="sudoku__block-cell sudoku__block-cell-2"></div>
           <div class="sudoku__block-cell sudoku__block-cell-3">3</div>
           <div class="sudoku__block-cell sudoku__block-cell-4"></div>
           <div class="sudoku__block-cell sudoku__block-cell-5">5</div>
@@ -80,7 +87,7 @@
           <div class="sudoku__block-cell sudoku__block-cell-1">1</div>
           <div class="sudoku__block-cell sudoku__block-cell-2">2</div>
           <div class="sudoku__block-cell sudoku__block-cell-3"></div>
-          <div class="sudoku__block-cell sudoku__block-cell-4">4</div>
+          <div class="sudoku__block-cell sudoku__block-cell-4"></div>
           <div class="sudoku__block-cell sudoku__block-cell-5">5</div>
           <div class="sudoku__block-cell sudoku__block-cell-6">6</div>
           <div class="sudoku__block-cell sudoku__block-cell-7">7</div>
@@ -88,7 +95,7 @@
           <div class="sudoku__block-cell sudoku__block-cell-9">9</div>
         </div>
         <div class="sudoku__block sudoku__block-8">
-          <div class="sudoku__block-cell sudoku__block-cell-1">1</div>
+          <div class="sudoku__block-cell sudoku__block-cell-1"></div>
           <div class="sudoku__block-cell sudoku__block-cell-2">2</div>
           <div class="sudoku__block-cell sudoku__block-cell-3">3</div>
           <div class="sudoku__block-cell sudoku__block-cell-4"></div>
@@ -102,7 +109,7 @@
           <div class="sudoku__block-cell sudoku__block-cell-1">1</div>
           <div class="sudoku__block-cell sudoku__block-cell-2">2</div>
           <div class="sudoku__block-cell sudoku__block-cell-3">3</div>
-          <div class="sudoku__block-cell sudoku__block-cell-4">4</div>
+          <div class="sudoku__block-cell sudoku__block-cell-4"></div>
           <div class="sudoku__block-cell sudoku__block-cell-5">5</div>
           <div class="sudoku__block-cell sudoku__block-cell-6"></div>
           <div class="sudoku__block-cell sudoku__block-cell-7">7</div>
@@ -113,7 +120,7 @@
 
       <section class="sudoku__controls">
         <button class="sudoku__start-game-btn">Start New Game!</button>
-        <div class="sudoku__timer">Timer</div>
+        <div class="sudoku__timer">00:00</div>
         <div class="sudoku__numpad">
           <button class="sudoku__btn sudoku__btn-1">1</button
           ><button class="sudoku__btn sudoku__btn-2">2</button
