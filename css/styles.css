@@ -56,6 +56,11 @@ html {
     -2px -2px 0 rgba(128, 0, 128, 1);
 }
 
+.sudoku__header span {
+  color: rgba(255, 255, 255, 1);
+  text-shadow: 0.5rem 0.5rem 0 rgba(0, 0, 0, 1), -2px -2px 0 rgba(0, 0, 0, 1);
+}
+
 /* 4 - SUDOKU GRID STYLING */
 .sudoku__grid {
   /* box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 1),
