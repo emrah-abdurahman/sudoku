@@ -12,7 +12,8 @@
 
 /* 1 - GLOBAL CSS VARIABLES */
 :root {
-  --color-background-1: rgba(173, 216, 230, 1);
+  --color-background-1: rgba(89, 207, 247, 1);
+  --color-background-2: rgba(4, 0, 59, 1);
   --color-background-purple: rgb(96, 38, 255);
   --color-background-block: rgba(255, 255, 255, 1);
   --color-background-btn: rgba(0, 0, 0, 1);
@@ -35,20 +36,34 @@ html {
 
 /* 3 - DAY AND NIGHT MODE TOGGLERS */
 .theme-togglers {
-  background-color: purple;
   height: 8rem;
-  left: -8rem;
-  padding: 1rem;
+  left: -8.5rem;
+  padding: 1.5rem;
   position: absolute;
   top: 2rem;
   width: 17rem;
 }
 
 .theme-toggler {
+  cursor: pointer;
   display: inline-block;
   height: 6rem;
   position: absolute;
   width: 6rem;
+}
+
+#theme-toggler__label {
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+#theme-toggler__label:checked ~ .theme-toggler__day-mode {
+  transform: translateX(0);
+}
+
+#theme-toggler__label:checked ~ .theme-toggler__night-mode {
+  transform: translateX(8.5rem);
 }
 
 .theme-toggler__day-mode,
@@ -61,18 +76,20 @@ html {
   box-shadow: 0.3rem 0.3rem 1rem rgba(255, 204, 0, 1),
     -0.3rem -0.3rem 1rem rgba(255, 204, 0, 1);
   transform: translateX(8.5rem);
+  transition: all 0.5s 0.3s;
 }
 
 .theme-toggler__night-mode {
   background-color: rgba(251, 251, 250, 1);
   box-shadow: 0.3rem 0.3rem 1rem rgba(251, 251, 250, 1),
     -0.3rem -0.3rem 1rem rgba(251, 251, 250, 1);
+  transition: all 0.5s 0.3s;
 }
 
 /* 4 - GLOBAL CONTAINER */
 #container {
   align-content: center;
-  background-color: var(--color-background-1);
+  background-color: var(--color-background-2);
   display: grid;
   font-size: 3rem;
   font-weight: 500;
