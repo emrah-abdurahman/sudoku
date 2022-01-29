@@ -45,6 +45,7 @@ html {
 }
 
 .theme-toggler {
+  border-radius: 50%;
   cursor: pointer;
   display: inline-block;
   height: 6rem;
@@ -64,11 +65,6 @@ html {
 
 #theme-toggler__label:checked ~ .theme-toggler__night-mode {
   transform: translateX(8.5rem);
-}
-
-.theme-toggler__day-mode,
-.theme-toggler__night-mode {
-  border-radius: 50%;
 }
 
 .theme-toggler__day-mode {
