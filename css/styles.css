@@ -4,10 +4,11 @@
    3 - DAY AND NIGHT MODE TOGGLERS
    4 - GLOBAL CONTAINER
    5 - SUDOKU HEADER
-   6 - SUDOKU GRID STYLING
-   7 - SUDOKU BLOCK STYLING
-   8 - SUDOKU CELL STYLING
-   9 - SUDOKU CONTROLS STYLING
+   6 - SUDOKU TUTORIAL
+   7 - SUDOKU GRID STYLING
+   8 - SUDOKU BLOCK STYLING
+   9 - SUDOKU CELL STYLING
+   10 - SUDOKU CONTROLS STYLING
 */
 
 /* 1 - GLOBAL CSS VARIABLES */
@@ -85,12 +86,12 @@ html {
 /* 4 - GLOBAL CONTAINER */
 #container {
   align-content: center;
-  background-color: var(--color-background-2);
+  background-color: var(--color-background-1);
   display: grid;
   font-size: 3rem;
   font-weight: 500;
   gap: 4rem;
-  grid-template-columns: max-content max-content;
+  grid-template-columns: 45rem max-content max-content;
   height: 100vh;
   justify-content: center;
   margin: auto auto;
@@ -101,7 +102,7 @@ html {
 .sudoku__header {
   font-family: "Permanent Marker", cursive;
   font-size: 4rem;
-  grid-column: 1 / span 2;
+  grid-column: 1 / -1;
   text-align: center;
   text-shadow: 0.5rem 0.5rem 0 rgba(128, 0, 128, 1),
     -0.2rem -0.2rem 0 rgba(128, 0, 128, 1);
@@ -113,7 +114,59 @@ html {
     -0.2rem -0.2rem 0 rgba(0, 0, 0, 1);
 }
 
-/* 6 - SUDOKU GRID STYLING */
+/* 6 - SUDOKU TUTORIAL */
+.sudoku__tutorial {
+  color: rgba(255, 255, 255, 1);
+  line-height: 1.5;
+  text-align: center;
+}
+
+#sudoku__tutorial-toggler {
+  display: none;
+}
+
+#sudoku__tutorial-toggler:checked + .sudoku__checkbox-label h2::after {
+  transform: rotate(180deg);
+}
+
+#sudoku__tutorial-toggler:checked ~ .sudoku__tutorial-text {
+  height: 100%;
+}
+
+.sudoku__tutorial-heading {
+  background-color: rgba(0, 0, 0, 1);
+  cursor: pointer;
+  font-size: 3rem;
+  padding: 1rem 0 1rem 0;
+  text-transform: uppercase;
+}
+
+.sudoku__tutorial h2::after {
+  background-color: rgba(255, 255, 255, 1);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%, 50% 0);
+  content: "";
+  display: inline-block;
+  height: 2rem;
+  margin-left: 1rem;
+  transition: all 0.3s;
+  width: 2rem;
+}
+
+.sudoku__tutorial-text {
+  background-color: rgba(128, 0, 128, 1);
+  font-size: 1.8rem;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.sudoku__tutorial-text ul {
+  list-style: circle;
+  padding: 1rem 5rem;
+  text-align: justify;
+}
+
+/* 7 - SUDOKU GRID STYLING */
 .sudoku__grid {
   box-shadow: 0.2rem 0.2rem 0.5rem rgba(128, 0, 128, 1),
     -0.2rem -0.2rem 0.5rem rgba(128, 0, 128, 1);
@@ -126,7 +179,7 @@ html {
   width: 50rem;
 }
 
-/* 7 - SUDOKU BLOCK STYLING */
+/* 8 - SUDOKU BLOCK STYLING */
 .sudoku__block {
   background-color: var(--color-background-block);
   border: 2px solid black;
@@ -135,7 +188,7 @@ html {
   grid-template-rows: repeat(3, 1fr);
 }
 
-/* 8 - SUDOKU CELL STYLING */
+/* 9 - SUDOKU CELL STYLING */
 .sudoku__block-cell {
   align-items: center;
   border: 1px solid rgb(129, 129, 129);
@@ -171,7 +224,7 @@ html {
   border-left: none;
 }
 
-/* 9 - SUDOKU CONTROLS STYLING */
+/* 10 - SUDOKU CONTROLS STYLING */
 .sudoku__controls {
   align-self: center;
   background-color: var(--color-background-purple);
