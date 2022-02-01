@@ -42,27 +42,28 @@ body {
 
 /* 3 - DAY AND NIGHT MODE TOGGLERS */
 .theme-togglers {
-  height: 8rem;
-  left: -8.5rem;
+  height: 10rem;
+  left: -9.5rem;
   padding: 1.5rem;
   position: absolute;
   top: 2rem;
-  width: 17rem;
+  width: 25rem;
 }
 
 .theme-toggler {
   border-radius: 50%;
   cursor: pointer;
   display: inline-block;
-  height: 6rem;
+  height: 7rem;
   position: absolute;
-  width: 6rem;
+  width: 7rem;
 }
 
 #theme-toggler__label {
   left: 0;
   position: absolute;
   top: 0;
+  visibility: hidden;
 }
 
 #theme-toggler__label:checked ~ .theme-toggler__day-mode {
@@ -70,14 +71,14 @@ body {
 }
 
 #theme-toggler__label:checked ~ .theme-toggler__night-mode {
-  transform: translateX(8.5rem);
+  transform: translateX(13.5rem);
 }
 
 .theme-toggler__day-mode {
   background-color: rgba(255, 204, 0, 1);
   box-shadow: 0.3rem 0.3rem 1rem rgba(255, 204, 0, 1),
     -0.3rem -0.3rem 1rem rgba(255, 204, 0, 1);
-  transform: translateX(8.5rem);
+  transform: translateX(13.5rem);
   transition: all 0.5s 0.3s;
 }
 
@@ -319,7 +320,6 @@ body {
 .footer__sudoku-logo {
   font-family: "Permanent Marker", cursive;
   font-size: 4rem;
-  grid-column: 1 / -1;
   text-align: center;
   text-shadow: 0.5rem 0.5rem 0 rgba(128, 0, 128, 1),
     -0.2rem -0.2rem 0 rgba(128, 0, 128, 1);
