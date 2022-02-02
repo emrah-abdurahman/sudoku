@@ -1,8 +1,9 @@
-import { toggleTheme, hello } from "./javascript/Sudoku.mjs";
+import Sudoku from "./javascript/Sudoku.mjs";
 
-toggleTheme();
-hello("Emrah");
+let sudoku = null;
+const startNewGameBtn = document.querySelector(".sudoku__start-game-btn");
 
-document.querySelector(".sudoku__grid").addEventListener("click", function (e) {
-  console.log(e.target);
+startNewGameBtn.addEventListener("click", () => {
+  sudoku = new Sudoku();
+  sudoku.newGame();
 });
