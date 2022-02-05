@@ -1,4 +1,4 @@
-class Sudoku {
+export default class Sudoku {
   constructor() {
     this.sudokuMap = null;
   }
@@ -46,5 +46,3 @@ class Sudoku {
     this._populateCells();
   }
 }
-
-export default Sudoku;
