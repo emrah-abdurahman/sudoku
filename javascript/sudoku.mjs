@@ -21,34 +21,37 @@ export default class Sudoku {
         rowCells: rowCells,
       });
     });
-
-    console.log("Sudoku Map:", this.sudokuMap);
   }
 
-  // This internal method checks to make sure that no other block, column, or row cell has this random number assigned to it
+  // This internal method checks to make sure that no other block, column, or row cell
+  // has this random number assigned to it
   _cellNumberIsUnique(cell, possibleNumber) {
     const cellReference = this.sudokuMap.get(cell);
     const blockCells = Array.from(cellReference["blockCells"].children);
-    const columnCells = cellReference["columnCells"];
-    const rowCells = cellReference["rowCells"];
+    const columnCells = Array.from(cellReference["columnCells"]);
+    const rowCells = Array.from(cellReference["rowCells"]);
 
-    blockCells.forEach((blockCell) => {
-      if (blockCell.textContent === String(possibleNumber)) {
-        return false;
-      }
-    });
+    if (
+      blockCells.some(
+        (blockCell) => blockCell.innerText === String(possibleNumber)
+      )
+    ) {
+      return false;
+    }
 
-    columnCells.forEach((columnCell) => {
-      if (columnCell.textContent === String(possibleNumber)) {
-        return false;
-      }
-    });
+    if (
+      columnCells.some(
+        (columnCell) => columnCell.innerText === String(possibleNumber)
+      )
+    ) {
+      return false;
+    }
 
-    rowCells.forEach((rowCell) => {
-      if (rowCell.textContent === String(possibleNumber)) {
-        return false;
-      }
-    });
+    if (
+      rowCells.some((rowCell) => rowCell.innerText === String(possibleNumber))
+    ) {
+      return false;
+    }
 
     return true;
   }
@@ -57,21 +60,30 @@ export default class Sudoku {
   _populateCells() {
     for (let cell of this.sudokuMap.keys()) {
       const possibleNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-      let possibleNumber =
-        possibleNumbers[Math.floor(Math.random() * possibleNumbers.length)];
+      let randomNumberIndex = Math.floor(
+        Math.random() * possibleNumbers.length
+      );
+      let possibleNumber = possibleNumbers[randomNumberIndex];
 
       while (!this._cellNumberIsUnique(cell, possibleNumber)) {
-        const numberIndex = possibleNumbers.indexOf(possibleNumber);
-        possibleNumbers.splice(numberIndex, 1);
-        possibleNumber =
-          possibleNumbers[Math.floor(Math.random() * possibleNumbers.length)];
+        possibleNumbers.splice(randomNumberIndex, 1);
+        randomNumberIndex = Math.floor(Math.random() * possibleNumbers.length);
+        possibleNumber = possibleNumbers[randomNumberIndex];
       }
-      cell.textContent = possibleNumbers.shift();
-      console.log("Possible Numbers:", possibleNumbers);
+
+      cell.innerText = possibleNumber.toString();
+    }
+  }
+
+  // This internal method clears the cell numbers if starting a new game from a previous game
+  _clearCells() {
+    if (this.sudokuMap) {
+      this.sudokuMap.forEach((cell) => (cell.innerText = ""));
     }
   }
 
   newGame() {
+    this._clearCells();
     this._buildSudokuMap();
     this._populateCells();
   }
