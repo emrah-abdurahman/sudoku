@@ -1,7 +1,6 @@
 export default class Sudoku {
   constructor() {
     this.sudokuMap = null;
-    this.sudokuTimer = null;
   }
 
   // This internal method builds a Map object mapping each cell element to an object containing references to
@@ -58,21 +57,39 @@ export default class Sudoku {
 
   // This internal method iterates over each of the 81 cells and randomly populates a number 1 - 9
   _populateCells() {
-    for (let cell of this.sudokuMap.keys()) {
-      const possibleNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-      let randomNumberIndex = Math.floor(
-        Math.random() * possibleNumbers.length
-      );
-      let possibleNumber = possibleNumbers[randomNumberIndex];
+    let cells = [];
+    for (let i = 1; i <= 9; i++) {
+      const rowCells = document.querySelectorAll(`[class*='sudoku__row-${i}']`);
+      cells.push(Array.from(rowCells));
+    }
+    cells = cells.flat();
 
-      while (!this._cellNumberIsUnique(cell, possibleNumber)) {
-        possibleNumbers.splice(randomNumberIndex, 1);
-        randomNumberIndex = Math.floor(Math.random() * possibleNumbers.length);
-        possibleNumber = possibleNumbers[randomNumberIndex];
+    console.log(cells);
+
+    const possibleNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const possibleNumber = possibleNumbers[0];
+
+    backtrack: for (let i = 0; i < cells.length; i++) {
+      if (!this._cellNumberIsUnique(cells[i], possibleNumber)) {
+        let previousCellNumber = (cells[i - 1].innerText += 1);
+        i -= 1;
+        continue backtrack;
       }
 
-      cell.innerText = possibleNumber.toString();
+      cells[i].innerText = possibleNumber.toString();
     }
+
+    // for (let cell of this.sudokuMap.keys()) {
+    //   let possibleNumber = possibleNumbers[0];
+
+    //   while (!this._cellNumberIsUnique(cell, possibleNumber)) {
+    //     possibleNumbers.splice(randomNumberIndex, 1);
+    //     randomNumberIndex = Math.floor(Math.random() * possibleNumbers.length);
+    //     possibleNumber = possibleNumbers[randomNumberIndex];
+    //   }
+
+    //   cell.innerText = possibleNumber.toString();
+    // }
   }
 
   // This internal method clears the cell numbers if starting a new game from a previous game
@@ -83,7 +100,7 @@ export default class Sudoku {
   }
 
   newGame() {
-    this._clearCells();
+    // this._clearCells();
     this._buildSudokuMap();
     this._populateCells();
   }
