@@ -7,7 +7,7 @@ export default class Sudoku {
   // that cell's block, column, and row cells
   _buildSudokuMap() {
     this.sudokuMap = new Map();
-    const cells = document.querySelectorAll(".sudoku__block-cell");
+    const cells = this._getCellsInRowOrder();
 
     cells.forEach((cell) => {
       const cellClassList = cell.classList;
@@ -22,8 +22,8 @@ export default class Sudoku {
     });
   }
 
-  // This internal method checks to make sure that no other block, column, or row cell
-  // has this random number assigned to it
+  // This internal method checks to make sure that no other block, column,
+  // or row cell has this random number assigned to it
   _cellNumberIsUnique(cell, possibleNumber) {
     const cellReference = this.sudokuMap.get(cell);
     const blockCells = Array.from(cellReference["blockCells"].children);
@@ -55,8 +55,8 @@ export default class Sudoku {
     return true;
   }
 
-  // This internal method iterates over each of the 81 cells and randomly populates a number 1 - 9
-  _populateCells() {
+  // This internal method returns a reference of all cells in row order
+  _getCellsInRowOrder() {
     let cells = [];
     for (let i = 1; i <= 9; i++) {
       const rowCells = document.querySelectorAll(`[class*='sudoku__row-${i}']`);
@@ -64,32 +64,17 @@ export default class Sudoku {
     }
     cells = cells.flat();
 
+    return cells;
+  }
+
+  // This internal method iterates over each of the 81 cells and randomly populates a number 1 - 9
+  _populateCells() {
+    let sudokuSolver = new Worker("javascript/sudoku-solver.js");
+    let cells = this._getCellsInRowOrder();
     console.log(cells);
-
-    const possibleNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    const possibleNumber = possibleNumbers[0];
-
-    backtrack: for (let i = 0; i < cells.length; i++) {
-      if (!this._cellNumberIsUnique(cells[i], possibleNumber)) {
-        let previousCellNumber = (cells[i - 1].innerText += 1);
-        i -= 1;
-        continue backtrack;
-      }
-
-      cells[i].innerText = possibleNumber.toString();
-    }
-
-    // for (let cell of this.sudokuMap.keys()) {
-    //   let possibleNumber = possibleNumbers[0];
-
-    //   while (!this._cellNumberIsUnique(cell, possibleNumber)) {
-    //     possibleNumbers.splice(randomNumberIndex, 1);
-    //     randomNumberIndex = Math.floor(Math.random() * possibleNumbers.length);
-    //     possibleNumber = possibleNumbers[randomNumberIndex];
-    //   }
-
-    //   cell.innerText = possibleNumber.toString();
-    // }
+    sudokuSolver.addEventListener("message", function (e) {
+      console.log(e.data);
+    });
   }
 
   // This internal method clears the cell numbers if starting a new game from a previous game
