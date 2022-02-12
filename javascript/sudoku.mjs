@@ -70,8 +70,6 @@ export default class Sudoku {
   // This internal method iterates over each of the 81 cells and randomly populates a number 1 - 9
   _populateCells() {
     let sudokuSolver = new Worker("javascript/sudoku-solver.js");
-    let cells = this._getCellsInRowOrder();
-    console.log(cells);
     sudokuSolver.addEventListener("message", function (e) {
       console.log(e.data);
     });
